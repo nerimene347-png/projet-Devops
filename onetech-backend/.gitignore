@@ -1,0 +1,4 @@
+node_modules
+.env
+uploads/attestations/*
+!uploads/attestations/.gitkeep

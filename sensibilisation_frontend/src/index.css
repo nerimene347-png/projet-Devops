@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme {
+  /* --- Palette de marque : Bleu / Blanc / Orange --- */
+  --color-navy-950: #0a1f3d;
+  --color-navy-900: #0d2b52;
+  --color-primary-700: #0e4d92;   /* Bleu institutionnel principal */
+  --color-primary-600: #1565c0;
+  --color-primary-500: #2f7fd6;
+  --color-primary-100: #e5f0fb;
+  --color-primary-50:  #f3f8fd;
+
+  --color-accent-600: #e8621a;    /* Orange "alerte / action" */
+  --color-accent-500: #f5821f;
+  --color-accent-400: #ff9d42;
+  --color-accent-100: #fdead9;
+
+  --color-slate-900: #0f1b2b;
+  --color-slate-700: #334155;
+  --color-slate-500: #64748b;
+  --color-slate-200: #e2e8f0;
+  --color-slate-100: #f1f5f9;
+
+  --color-success: #1a9c6b;
+  --color-warning: #f5821f;
+  --color-danger:  #d63b3b;
+
+  /* --- Typographie --- */
+  --font-display: "Sora", "Manrope", sans-serif;
+  --font-sans: "Inter", "Manrope", sans-serif;
+
+  /* --- Rayons --- */
+  --radius-card: 0.9rem;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+  }
+  body {
+    @apply bg-slate-100 text-slate-900 antialiased;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+  }
+  ::selection {
+    background-color: var(--color-accent-100);
+  }
+}
+
+@layer utilities {
+  .brand-gradient {
+    background: linear-gradient(135deg, var(--color-navy-900) 0%, var(--color-primary-700) 55%, var(--color-primary-600) 100%);
+  }
+  .accent-gradient {
+    background: linear-gradient(135deg, var(--color-accent-600), var(--color-accent-400));
+  }
+  .scrollbar-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+  .scrollbar-thin::-webkit-scrollbar-thumb { background-color: var(--color-slate-200); border-radius: 999px; }
+}
+/* Impression : n'imprimer que le certificat (masque sidebar, topbar, boutons) */
+@media print {
+  aside, header, .print\:hidden { display: none !important; }
+  body, main { background: white !important; padding: 0 !important; margin: 0 !important; }
+  main { max-width: 100% !important; }
+}
